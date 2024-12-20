@@ -35,7 +35,7 @@ export class EditTaskService {
             { $set: { "groups.$.tasks":group.tasks } } 
         ).exec();
         await this.BoardModel.updateOne(
-            {'groups.name':updatedTask.status},
+            {name: boardName,'groups.name':updatedTask.status},
             {$push:{'groups.$.tasks':updatedTask}}
         );
         return task.title;
