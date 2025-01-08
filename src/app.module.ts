@@ -11,7 +11,7 @@ import { RequestSafetyPipe } from './pipes/request-safety.pipe';
 @Module({
   imports: [
     BoardModule,GroupModule,TasksModule,
-    MongooseModule.forRoot('mongodb://localhost:27018/KANBAN',
+    MongooseModule.forRoot('mongodb+srv://Motolani:1234@cluster0.br1bq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
         {
           onConnectionCreate:(connection:Connection)=>{
               connection.on('connected',()=>console.log('Database connection successful'))

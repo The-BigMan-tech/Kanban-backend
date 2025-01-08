@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  app:
+    image: docker123j/kanban:2
+    ports:
+      - '3100:3100'
+    depends_on:
+      - mongo
+    environment:
+      - DATABASE_URL=mongodb://mongo:27017/Kanbans
+    networks:
+      - app-network
+
+  mongo:
+    image: mongo:8.0 
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - app-network
+
+volumes:
+  mongo_data:
+
+networks:
+  app-network:
+    driver: bridge
